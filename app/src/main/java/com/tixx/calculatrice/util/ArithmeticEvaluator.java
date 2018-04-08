@@ -1,64 +1,54 @@
 package com.tixx.calculatrice.util;
 
-// =====================================================================================================================
-// Author : Billdzdv (iorexx)
-// Version : 1.0.1
-// Date : April 7, 2018
-// Brief : Parse a given arithmetic string expression and evaluate it into a Double.
-// =====================================================================================================================
-// operators: + - * / unary+ unary- %
-// functions: sin cos tan sqrt log ln ^ exp fact
-// constants: pi
-// =====================================================================================================================
-
+/**
+ * @author billiorexx
+ * @version 1.0.0
+ * @since April 7, 2018
+ * parse a given arithmetic expression string and evaluate the result into a double.
+ * feel free to use or redistribute the source code.
+ */
 
 public class ArithmeticEvaluator {
-    // variables -----------------------------------------------------------------------------------
+
+    private final String STR_ERROR_SYNTAX = "syntax error";
 
     private String expression;
-    private char curChar;
+    private int currentChar;
     private int position;
 
-    // construction --------------------------------------------------------------------------------
-
-    public  ArithmeticEvaluator() {
-    }
-
-    // user ----------------------------------------------------------------------------------------
-
-    public Double evaluate(String expression) {
-        if (expression.isEmpty())
-            return 0.;
-
+    /**
+     * parse and evaluate the given string
+     * @return evaluation result
+     */
+    public double evaluate(String expression) {
         this.expression = expression;
-        curChar = (char)-1;
+        this.currentChar = -1;
         this.position = -1;
 
+        if (this.expression.isEmpty())
+            return 0.;
         return parse();
     }
 
-
-    // core ----------------------------------------------------------------------------------------
-
     private void stepIn() {
         if (++position < expression.length())
-            curChar = expression.charAt(position);
+            currentChar = expression.charAt(position);
         else
-            curChar = (char)-1;
+            currentChar = (char)-1;
     }
 
     private boolean removeChar(int c) {
-        while (curChar == ' ')
+        while (currentChar == ' ')
             stepIn();
-        if (curChar == c) {
+        if (currentChar == c) {
             stepIn();
             return true;
         }
         return false;
     }
 
-    private Double parseExpression() {
-        Double result = parseTerm();
+    private double parseExpression() {
+        double result = parseTerm();
         while (true) {
             // addition
             if (removeChar('+'))
@@ -71,9 +61,9 @@ public class ArithmeticEvaluator {
         }
     }
 
-    private Double parseTerm() {
-        Double result = parseFactor();
-        Double tmp = 0.;
+    private double parseTerm() {
+        double result = parseFactor();
+        double tmp;
         while (true) {
             // multiplication
             if (removeChar('*'))
@@ -99,14 +89,14 @@ public class ArithmeticEvaluator {
         }
     }
 
-    private Double parseFactor() {
+    private double parseFactor() {
         // unary operators + and -
         if (removeChar('+'))
             return parseFactor();
         if (removeChar('-'))
             return -parseFactor();
 
-        Double result;
+        double result;
         int startPos = this.position;
 
         // parentheses
@@ -116,51 +106,63 @@ public class ArithmeticEvaluator {
         }
 
         // numbers
-        else if ((curChar >= '0' && curChar <= '9') || curChar == '.') {
-            while ((curChar >= '0' && curChar <= '9') || curChar == '.')
+        else if ((currentChar >= '0' && currentChar <= '9') || currentChar == '.') {
+            while ((currentChar >= '0' && currentChar <= '9') || currentChar == '.')
                 stepIn();
             result = Double.parseDouble(expression.substring(startPos, this.position));
         }
 
-        // functions
-        else if (curChar >= 'a' && curChar <= 'z') {
-            while (curChar >= 'a' && curChar <= 'z')
+        // symbols
+        else if (currentChar == 'π') {
+            stepIn();
+            result = Math.PI;
+        }
+
+        else if (currentChar >= 'a' && currentChar <= 'z') {
+            while (currentChar >= 'a' && currentChar <= 'z')
                 stepIn();
             String func = expression.substring(startPos, this.position);
-            result = parseFactor();
-            switch (func) {
-                case "sqrt":
-                    result = Math.sqrt(result);
-                    break;
-                case "sin":
-                    result = Math.sin(result);
-                    break;
-                case "cos":
-                    result = Math.cos(result);
-                    break;
-                case "tan":
-                    result = Math.tan(result);
-                    break;
-                case "ln":
-                    result = Math.log(result);
-                    break;
-                case "log":
-                    result = Math.log10(result);
-                    break;
-                case "exp":
-                    result = Math.exp(result);
-                    break;
-                case "fact":
-                    result = this.fact(result);
-                    break;
-                case "pi":
-                    result = Math.PI ; break;
-                default:
-                    throw new RuntimeException("syntax error");
+
+            // constants
+            if (func.equals("e")) {
+                result = Math.exp(1.);
+            }
+
+            // functions
+            else {
+                result = parseFactor();
+                switch (func) {
+                    case "sqrt":
+                        result = Math.sqrt(result);
+                        break;
+                    case "sin":
+                        result = Math.sin(result);
+                        break;
+                    case "cos":
+                        result = Math.cos(result);
+                        break;
+                    case "tan":
+                        result = Math.tan(result);
+                        break;
+                    case "ln":
+                        result = Math.log(result);
+                        break;
+                    case "log":
+                        result = Math.log10(result);
+                        break;
+                    case "exp":
+                        result = Math.exp(result);
+                        break;
+                    case "fact":
+                        result = this.fact(result);
+                        break;
+                    default:
+                        throw new RuntimeException(STR_ERROR_SYNTAX);
+                }
             }
         }
         else
-            throw new RuntimeException("syntax error");
+            throw new RuntimeException(STR_ERROR_SYNTAX);
 
         // power
         if (removeChar('^'))
@@ -169,16 +171,16 @@ public class ArithmeticEvaluator {
         return result;
     }
 
-    private Double parse() {
+    private double parse() {
         stepIn();
-        Double result = parseExpression();
+        double result = parseExpression();
         if (this.position < expression.length())
-            throw new RuntimeException("syntax error");
+            throw new RuntimeException(STR_ERROR_SYNTAX);
         return result;
     }
 
-    private Double fact(Double n) {
-        Double result = 1.;
+    private double fact(double n) {
+        double result = 1.;
         while (n >= 2) {
             result *= n--;
         }

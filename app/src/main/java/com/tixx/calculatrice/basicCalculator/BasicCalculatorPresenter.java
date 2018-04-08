@@ -38,7 +38,8 @@ public class BasicCalculatorPresenter implements IBasicCalculatorPresenter {
     @Override
     public void backSpace() {
         String input = mainView.getInput();
-        if (!input.isEmpty()) {
+        int backStep = m_basicCalcModel.backSpace(input);
+        for (int i = 0; i < backStep; i++) {
             mainView.doBackSpace();
         }
     }

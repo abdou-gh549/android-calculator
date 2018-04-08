@@ -44,12 +44,34 @@ public class BasicCalculatorModel {
 
     }
 
-
-
     private String getLastChar(String str) {
         if (!str.isEmpty()) {
             return (str.length() == 1) ? str : String.valueOf(str.charAt(str.length() - 1));
         } else return "";
     }
 
+    public int backSpace(String input) {
+        try {
+            if (!input.isEmpty()) {
+                String subString = input.substring(0, input.length() - 1);
+                String lastChar = getLastChar(subString);
+                if ("t".equals(lastChar))
+                    return 5;
+
+                else if ("s".equals(lastChar) ||
+                        "g".equals(lastChar) ||
+                        "p".equals(lastChar)) {
+                    return 4;
+                } else if ("n".equals(lastChar)) {
+                    String secondlastChar = getLastChar(input.substring(0, input.length() - 2));
+                    return ("l".equals(secondlastChar)) ? 3 : 4;
+                } else return 1;
+            }
+            return 0;
+        } catch (Exception e) {
+            return 0;
+        }
+
+
+    }
 }

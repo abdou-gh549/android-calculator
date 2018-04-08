@@ -2,11 +2,14 @@ package com.tixx.calculatrice.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.support.v4.app.Fragment;
 import com.tixx.calculatrice.R;
@@ -20,6 +23,11 @@ public class MainActivity extends AppCompatActivity implements IMainConstraint.I
     private View advanceButtonFragment;
     private TextView inputTextView;
     private TextView resultTextView;
+    private LinearLayout inputLinLay;
+    private ScrollView inp_scrollview;
+
+    private boolean clearResult = false;
+
 
     private MainPresenter mainPresenter;
 
@@ -32,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements IMainConstraint.I
         advanceButtonFragment = findViewById(R.id.advanceButtonFragment);
         inputTextView = findViewById(R.id.inputTextView);
         resultTextView = findViewById(R.id.resultTextView);
+        inputLinLay    = findViewById(R.id.input_layout);
+        inp_scrollview    = findViewById(R.id.inp_scrollview);
 
         mainPresenter = new MainPresenter(this);
 
@@ -61,11 +71,13 @@ public class MainActivity extends AppCompatActivity implements IMainConstraint.I
 
     @Override
     public void clearResult() {
+        mainPresenter.saveExpression();
         resultTextView.setText("");
     }
 
     @Override
     public void clearInput() {
+        clearResult();
         inputTextView.setText("");
     }
 
@@ -76,6 +88,10 @@ public class MainActivity extends AppCompatActivity implements IMainConstraint.I
 
     @Override
     public void addToInput(String inp) {
+        if(clearResult){
+            clearResult();
+            clearResult = false;
+        }
         inputTextView.append(inp);
     }
 
@@ -90,9 +106,27 @@ public class MainActivity extends AppCompatActivity implements IMainConstraint.I
     }
 
     @Override
+    public String getResult() {
+        return resultTextView.getText().toString();
+    }
+
+    @Override
     public void showResult(String result) {
+        clearResult = true;
+        Log.d("result", result);
         resultTextView.setText(result);
     }
+
+    @Override
+    public TextView getNewTextView() {
+        TextView textView =  (TextView) getLayoutInflater().inflate(R.layout.oldresult_textview, null);
+        int lastIndex = inputLinLay.indexOfChild(inputTextView);
+
+        inputLinLay.addView(textView, lastIndex);
+        inp_scrollview.scrollTo(0,inputLinLay.indexOfChild(inputTextView));
+        return textView;
+    }
+
 
     public void expand(final View v) {
         v.measure(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);

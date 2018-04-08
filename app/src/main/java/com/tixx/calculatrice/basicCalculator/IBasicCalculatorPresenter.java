@@ -5,7 +5,6 @@ package com.tixx.calculatrice.basicCalculator;
  */
 
 public interface IBasicCalculatorPresenter {
-    boolean clearInput = false;
     void numberButtonClick(int buttonTage);
     void operatorButtonClick(String operator);
     void backSpace();

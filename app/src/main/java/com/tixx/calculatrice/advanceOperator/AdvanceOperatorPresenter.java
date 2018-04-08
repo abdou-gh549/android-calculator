@@ -2,9 +2,6 @@ package com.tixx.calculatrice.advanceOperator;
 
 import com.tixx.calculatrice.main.IMainConstraint.IMainView;
 
-/**
- * Created by abdellah on 4/7/2018.
- */
 
 public class AdvanceOperatorPresenter implements IAdvanceOperatorPresenter {
     private IMainView mainView;
@@ -12,7 +9,7 @@ public class AdvanceOperatorPresenter implements IAdvanceOperatorPresenter {
 
     public AdvanceOperatorPresenter(IMainView IMainView) {
         this.mainView = IMainView;
-        advanceOperatorModel = new AdvanceOperatorModel();
+        advanceOperatorModel =  new AdvanceOperatorModel();
     }
 
     @Override
@@ -28,7 +25,7 @@ public class AdvanceOperatorPresenter implements IAdvanceOperatorPresenter {
     @Override
     public void addPowerOperator() {
         String inputToAdd = advanceOperatorModel.addPowerOperator(mainView.getInput());
-        mainView.addToInput("^");
+        mainView.addToInput(inputToAdd);
     }
 
     @Override

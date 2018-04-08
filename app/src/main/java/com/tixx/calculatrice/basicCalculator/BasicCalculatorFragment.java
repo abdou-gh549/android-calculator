@@ -53,7 +53,7 @@ public class BasicCalculatorFragment extends Fragment {
 
     private void setUpPointButton() {
         basicCalculatorView.findViewById(R.id.button_point)
-                .setOnClickListener(e->presenter.addPoint());
+                .setOnClickListener(e -> presenter.addPoint());
     }
 
     private void setUpClearBtn() {
@@ -91,15 +91,15 @@ public class BasicCalculatorFragment extends Fragment {
         Button button;
         String operator = "+-*/%";
         Map<Character, Integer> buttons = new HashMap<>();
-        buttons.put( '+', R.id.button_plus);
-        buttons.put( '-', R.id.button_min);
-        buttons.put( '*', R.id.button_mult);
-        buttons.put( '/', R.id.button_div);
-        buttons.put( '%', R.id.button_mod);
+        buttons.put('+', R.id.button_plus);
+        buttons.put('-', R.id.button_min);
+        buttons.put('*', R.id.button_mult);
+        buttons.put('/', R.id.button_div);
+        buttons.put('%', R.id.button_mod);
 
 
         for (int i = 0; i < buttons.size(); i++) {
-            button = basicCalculatorView.findViewById(buttons.get( operator.charAt(i) ));
+            button = basicCalculatorView.findViewById(buttons.get(operator.charAt(i)));
             button.setTag(operator.charAt(i));
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -111,9 +111,9 @@ public class BasicCalculatorFragment extends Fragment {
         }
     }
 
-    private void setUpEqualButton(){
+    private void setUpEqualButton() {
         basicCalculatorView.findViewById(R.id.button_equal)
-                .setOnClickListener(e->presenter.calculResult());
+                .setOnClickListener(e -> presenter.calculResult());
     }
 
 }

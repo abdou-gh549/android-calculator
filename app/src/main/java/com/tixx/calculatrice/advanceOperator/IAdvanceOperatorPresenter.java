@@ -9,5 +9,5 @@ public interface IAdvanceOperatorPresenter {
     void addOpenParenthes();
     void addPowerOperator();
     void addPi();
-    void addOtherOperator(String operator);
+    void addOtherOperator(String operator   );
 }
