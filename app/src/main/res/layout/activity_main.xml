@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:id = "@+id/mainLayout"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    android:background = "@drawable/gradiant"
+    android:fitsSystemWindows = "true"
+    android:orientation = "vertical"
+    tools:context = ".main.MainActivity">
+
+    <ScrollView
+
+        android:id = "@+id/scrollView2"
+        android:layout_width = "match_parent"
+        android:layout_height = "0dp"
+        android:layout_marginBottom = "8dp"
+        android:layout_weight = "1"
+        android:scrollbars = "vertical">
+
+        <LinearLayout
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:orientation = "vertical">
+
+            <TextView
+                android:id = "@+id/inputTextView"
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "8dp"
+                android:paddingStart="@dimen/text_padding"
+                android:textColor = "@color/fontColor"
+                android:textSize = "18dp"
+                app:layout_constraintTop_toTopOf = "parent" />
+
+            <TextView
+                android:id = "@+id/resultTextView"
+                android:layout_width = "match_parent"
+                android:layout_height = "49dp"
+                android:layout_gravity = "center"
+                android:layout_marginBottom = "30dp"
+                android:gravity = "right"
+                android:paddingRight = "@dimen/text_padding"
+                android:text = "555025"
+                android:textColor = "@color/fontColor"
+                android:textSize = "35dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content">
+
+        <fragment
+            android:id = "@+id/basicButtonFragment"
+            android:name = "com.tixx.calculatrice.basicCalculator.BasicCalculatorFragment"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_gravity = "bottom"
+            tools:layout = "@layout/fragment_basic_calculator" />
+
+        <fragment
+            android:id = "@+id/advanceButtonFragment"
+            android:name = "com.tixx.calculatrice.advanceOperator.AdvanceOperatorFragment"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_gravity = "bottom"
+            android:visibility = "invisible"
+            tools:layout = "@layout/fragment_advance_operator" />
+
+        <ImageButton
+            android:id = "@+id/up_down_Button"
+            android:layout_width = "match_parent"
+            android:layout_height = "30dp"
+            android:layout_gravity = "bottom|center"
+            android:layout_margin = "0dp"
+            android:background = "@color/advanceOperator"
+            android:onClick = "onUpDownButtonCLick"
+            android:src = "@drawable/ic_up" />
+    </FrameLayout>
+
+</LinearLayout>

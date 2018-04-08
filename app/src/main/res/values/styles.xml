@@ -1,0 +1,29 @@
+<resources>
+
+    <style name = "AppTheme" parent = "Theme.AppCompat.Light.NoActionBar">
+        <item name = "android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name = "operatiobutton">
+        <item name = "android:borderlessButtonStyle">@drawable/operator_background</item>
+        <item name = "android:layout_margin">5dp</item>
+        <item name = "android:textSize">@dimen/font_size</item>
+        <item name = "android:layout_width">0dp</item>
+        <item name = "android:layout_weight">1</item>
+        <item name = "android:layout_height">@dimen/button_height</item>
+        <item name = "android:background">@drawable/operator_background</item>
+        <item name = "android:textColor">@color/fontColor</item>
+    </style>
+
+    <style name = "numberButton" parent = "operatiobutton">
+        <item name = "android:background">@color/numberButtonColor</item>
+    </style>
+
+    <style name = "advanceButton" parent = "numberButton">
+        <item name = "android:layout_margin">0dp</item>
+        <item name = "android:textAllCaps">false</item>
+        <item name = "android:background">@color/advanceOperator</item>
+    </style>
+
+    <dimen name = "font_size">20dp</dimen>
+</resources>

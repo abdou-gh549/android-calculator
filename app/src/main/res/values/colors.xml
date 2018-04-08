@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name = "gradientEndColor">#42b9e7</color>
+    <color name = "numberButtonColor">#30394a</color>
+    <color name = "colorAccent3">#2b3345</color>
+    <color name = "gradientStartColor">#179dbe</color>
+    <color name = "fontColor">#F6F6F6</color>
+    <color name = "equalColorButton">#f6a724</color>
+    <color name = "operatorButtonColor">#80a9ed</color>
+    <color name = "advanceOperator">#56638A</color>
+</resources>

@@ -1,0 +1,108 @@
+<FrameLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+             xmlns:tools = "http://schemas.android.com/tools"
+             android:layout_width = "match_parent"
+             android:layout_height = "match_parent"
+             tools:context = "com.tixx.calculatrice.advanceOperator.AdvanceOperatorFragment"
+    >
+
+    <TableLayout
+        android:id = "@+id/kklkl"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_gravity = "bottom"
+        android:layout_marginTop = "@dimen/button_table_top_margin"
+        android:background = "@color/advanceOperator"
+        android:gravity = "center"
+        android:paddingBottom = "30dp"
+        android:paddingTop = "15dp"
+        >
+
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/openParenthese"
+                style = "@style/advanceButton"
+                android:text = "("
+                />
+
+            <Button
+                android:id="@+id/closeParenthese"
+                style = "@style/advanceButton"
+                android:text = ")"
+                />
+
+            <Button
+                android:id="@+id/pow"
+                style = "@style/advanceButton"
+                android:text = "^"
+                />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/cos"
+                style = "@style/advanceButton"
+                android:text = "cos"
+                />
+
+            <Button
+                android:id="@+id/sin"
+                style = "@style/advanceButton"
+                android:text = "sin"
+                />
+
+            <Button
+                android:id="@+id/tan"
+                style = "@style/advanceButton"
+                android:text = "tan"
+                />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/exp"
+                style = "@style/advanceButton"
+                android:text = "exp"
+                />
+
+            <Button
+                android:id="@+id/log"
+                style = "@style/advanceButton"
+                android:text = "log"
+                />
+
+            <Button
+                android:id="@+id/ln"
+                style = "@style/advanceButton"
+                android:text = "ln"
+                />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/pi"
+                style = "@style/advanceButton"
+                android:text = "π"
+                />
+
+            <Button
+                android:id="@+id/sqrt"
+                style = "@style/advanceButton"
+
+                android:text = "√"
+                />
+
+            <Button
+                android:id="@+id/fact"
+                style = "@style/advanceButton"
+                android:text = "!"
+                />
+
+        </TableRow>
+    </TableLayout>
+
+</FrameLayout>

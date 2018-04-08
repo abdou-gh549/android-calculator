@@ -1,0 +1,167 @@
+<FrameLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+             xmlns:app = "http://schemas.android.com/apk/res-auto"
+             xmlns:tools = "http://schemas.android.com/tools"
+
+             android:layout_width = "match_parent"
+             android:layout_height = "wrap_content"
+             tools:context = "com.tixx.calculatrice.main.MainActivity"
+    >
+
+    <TableLayout
+        android:id = "@+id/kklkl"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_gravity = "bottom"
+        android:layout_marginTop = "@dimen/button_table_top_margin"
+        android:background = "@color/numberButtonColor"
+        android:gravity = "center"
+        android:paddingBottom = "30dp"
+        android:paddingTop = "36dp"
+        >
+
+        <TableRow>
+
+            <Button
+                android:id = "@+id/button_7"
+                style = "@style/numberButton"
+                android:text = "7"
+                />
+
+            <Button
+                android:id = "@+id/button_8"
+                style = "@style/numberButton"
+                android:text = "8"
+                />
+
+            <Button
+                android:id = "@+id/button_9"
+                style = "@style/numberButton"
+                android:text = "9"
+                />
+
+            <Button
+                android:id="@+id/button_mult"
+                style = "@style/operatiobutton"
+                android:text = "x"
+                android:textAllCaps="false"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id = "@+id/button_4"
+                style = "@style/numberButton"
+                android:text = "4"
+                />
+
+            <Button
+                android:id = "@+id/button_5"
+                style = "@style/numberButton"
+                android:text = "5"
+                />
+
+            <Button
+                android:id = "@+id/button_6"
+                style = "@style/numberButton"
+                android:text = "6"
+                />
+
+            <Button
+                android:id="@+id/button_min"
+                style = "@style/operatiobutton"
+                android:text = "-"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id = "@+id/button_1"
+                style = "@style/numberButton"
+                android:text = "1"
+                />
+
+            <Button
+                android:id = "@+id/button_2"
+                style = "@style/numberButton"
+                android:text = "2"
+                />
+
+            <Button
+                android:id = "@+id/button_3"
+                style = "@style/numberButton"
+                android:text = "3"
+                />
+
+            <Button
+                android:id="@+id/button_plus"
+                style = "@style/operatiobutton"
+                android:text = "+"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id = "@+id/button_0"
+                style = "@style/numberButton"
+                android:layout_weight = "2"
+                android:text = "0"
+                />
+
+            <Button
+                android:id="@+id/button_point"
+                style = "@style/numberButton"
+                android:text = "."
+                />
+
+            <Button
+                android:id="@+id/button_equal"
+                style = "@style/operatiobutton"
+                android:background = "@drawable/equal_background"
+                android:text = "="
+                />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:id = "@+id/topOperatorLayout"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:gravity = "center"
+        app:layout_anchor = "@id/kklkl"
+
+        >
+
+        <ImageButton
+            android:id="@+id/button_backspace"
+            style = "@style/operatiobutton"
+            android:src="@drawable/ic_backspace"
+            />
+        <Button
+            android:id="@+id/button_Ac"
+            style = "@style/operatiobutton"
+            android:text = "AC"
+            />
+        <Button
+            android:id="@+id/button_mod"
+
+            style = "@style/operatiobutton"
+            android:text = "%"
+            android:textAllCaps="false"
+            />
+
+        <Button
+            android:id="@+id/button_div"
+            style = "@style/operatiobutton"
+            android:text = "÷"
+            />
+    </LinearLayout>
+
+</FrameLayout>
