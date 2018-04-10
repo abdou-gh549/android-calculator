@@ -1,10 +1,6 @@
 package com.tixx.calculatrice.util;
 
-/**
- * Created by abdellah on 4/8/2018.
- */
-
-public class ExpressionChek {
+public class ExpressionCheck {
 
     static public boolean isOperator(String str) {
         return !str.matches("[0123456789π)]");

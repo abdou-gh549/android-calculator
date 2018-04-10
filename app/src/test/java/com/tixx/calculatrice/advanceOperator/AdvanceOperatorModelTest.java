@@ -5,11 +5,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by abdellah on 4/8/2018.
- */
 public class AdvanceOperatorModelTest {
     AdvanceOperatorModel advanceOperatorModel;
+
     @Before
     public void setUp() throws Exception {
         advanceOperatorModel = new AdvanceOperatorModel();
@@ -22,7 +20,12 @@ public class AdvanceOperatorModelTest {
         assertEquals("", advanceOperatorModel.addPowerOperator(""));
         assertEquals("", advanceOperatorModel.addPowerOperator("5+5+"));
         assertEquals("^", advanceOperatorModel.addPowerOperator("5+3)"));
-
+    }
+    @Test
+    public void addOperator() throws Exception {
+        assertEquals("", advanceOperatorModel.addOperator("564", "cos"));
+        assertEquals("cos(", advanceOperatorModel.addOperator("^", "cos"));
+        assertEquals("", advanceOperatorModel.addOperator("564)", "cos"));
     }
 
 }

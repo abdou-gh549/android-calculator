@@ -1,12 +1,5 @@
 package com.tixx.calculatrice.util;
 
-/**
- * @author billiorexx
- * @version 1.0.0
- * @since April 7, 2018
- * parse a given arithmetic expression string and evaluate the result into a double.
- * feel free to use or redistribute the source code.
- */
 
 public class ArithmeticEvaluator {
 
@@ -18,6 +11,7 @@ public class ArithmeticEvaluator {
 
     /**
      * parse and evaluate the given string
+     *
      * @return evaluation result
      */
     public double evaluate(String expression) {
@@ -34,7 +28,7 @@ public class ArithmeticEvaluator {
         if (++position < expression.length())
             currentChar = expression.charAt(position);
         else
-            currentChar = (char)-1;
+            currentChar = (char) -1;
     }
 
     private boolean removeChar(int c) {
@@ -53,7 +47,7 @@ public class ArithmeticEvaluator {
             // addition
             if (removeChar('+'))
                 result += parseTerm();
-            // subtraction
+                // subtraction
             else if (removeChar('-'))
                 result -= parseTerm();
             else
@@ -68,7 +62,7 @@ public class ArithmeticEvaluator {
             // multiplication
             if (removeChar('*'))
                 result *= parseFactor();
-            // division
+                // division
             else if (removeChar('/')) {
                 tmp = parseFactor();
                 if (tmp != 0.)
@@ -83,8 +77,7 @@ public class ArithmeticEvaluator {
                     result %= tmp;
                 else
                     throw new RuntimeException("modulo 0");
-            }
-            else
+            } else
                 return result;
         }
     }
@@ -116,9 +109,7 @@ public class ArithmeticEvaluator {
         else if (currentChar == 'π') {
             stepIn();
             result = Math.PI;
-        }
-
-        else if (currentChar >= 'a' && currentChar <= 'z') {
+        } else if (currentChar >= 'a' && currentChar <= 'z') {
             while (currentChar >= 'a' && currentChar <= 'z')
                 stepIn();
             String func = expression.substring(startPos, this.position);
@@ -160,8 +151,7 @@ public class ArithmeticEvaluator {
                         throw new RuntimeException(STR_ERROR_SYNTAX);
                 }
             }
-        }
-        else
+        } else
             throw new RuntimeException(STR_ERROR_SYNTAX);
 
         // power

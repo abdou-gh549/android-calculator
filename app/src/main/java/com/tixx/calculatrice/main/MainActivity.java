@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.support.v4.app.Fragment;
+
 import com.tixx.calculatrice.R;
 import com.tixx.calculatrice.advanceOperator.AdvanceOperatorFragment;
 import com.tixx.calculatrice.basicCalculator.BasicCalculatorFragment;
@@ -23,13 +23,35 @@ public class MainActivity extends AppCompatActivity implements IMainConstraint.I
     private View advanceButtonFragment;
     private TextView inputTextView;
     private TextView resultTextView;
-    private LinearLayout inputLinLay;
-    private ScrollView inp_scrollview;
 
     private boolean clearResult = false;
 
-
     private MainPresenter mainPresenter;
+
+    public static void collapse(final View v) {
+        final int initialHeight = v.getMeasuredHeight();
+
+        Animation a = new Animation() {
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                if (interpolatedTime == 1) {
+                    v.setVisibility(View.GONE);
+                } else {
+                    v.getLayoutParams().height = initialHeight - (int) (initialHeight * interpolatedTime);
+                    v.requestLayout();
+                }
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+        };
+
+        // 1dp/ms
+        a.setDuration((int) (initialHeight / v.getContext().getResources().getDisplayMetrics().density) / 2);
+        v.startAnimation(a);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +62,6 @@ public class MainActivity extends AppCompatActivity implements IMainConstraint.I
         advanceButtonFragment = findViewById(R.id.advanceButtonFragment);
         inputTextView = findViewById(R.id.inputTextView);
         resultTextView = findViewById(R.id.resultTextView);
-        inputLinLay    = findViewById(R.id.input_layout);
-        inp_scrollview    = findViewById(R.id.inp_scrollview);
 
         mainPresenter = new MainPresenter(this);
 
@@ -58,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements IMainConstraint.I
         expand(advanceButtonFragment);
         upDownImageButton.setTag(R.drawable.ic_down);
         upDownImageButton.setImageResource(R.drawable.ic_down);
-
     }
 
     @Override
@@ -88,13 +107,12 @@ public class MainActivity extends AppCompatActivity implements IMainConstraint.I
 
     @Override
     public void addToInput(String inp) {
-        if(clearResult){
+        if (clearResult) {
             clearResult();
             clearResult = false;
         }
         inputTextView.append(inp);
     }
-
 
     @Override
     public void doBackSpace() {
@@ -102,12 +120,7 @@ public class MainActivity extends AppCompatActivity implements IMainConstraint.I
         // delete last char from inp
         String newInp = inp.substring(0, inp.length() - 1);
 
-        inputTextView.setText( newInp );
-    }
-
-    @Override
-    public String getResult() {
-        return resultTextView.getText().toString();
+        inputTextView.setText(newInp);
     }
 
     @Override
@@ -115,16 +128,6 @@ public class MainActivity extends AppCompatActivity implements IMainConstraint.I
         clearResult = true;
         Log.d("result", result);
         resultTextView.setText(result);
-    }
-
-    @Override
-    public TextView getNewTextView() {
-        TextView textView =  (TextView) getLayoutInflater().inflate(R.layout.oldresult_textview, null);
-        int lastIndex = inputLinLay.indexOfChild(inputTextView);
-
-        inputLinLay.addView(textView, lastIndex);
-        inp_scrollview.scrollTo(0,inputLinLay.indexOfChild(inputTextView));
-        return textView;
     }
 
 
@@ -152,31 +155,6 @@ public class MainActivity extends AppCompatActivity implements IMainConstraint.I
 
         // 1dp/ms
         a.setDuration((int) (targetHeight / v.getContext().getResources().getDisplayMetrics().density) / 2);
-        v.startAnimation(a);
-    }
-
-    public static void collapse(final View v) {
-        final int initialHeight = v.getMeasuredHeight();
-
-        Animation a = new Animation() {
-            @Override
-            protected void applyTransformation(float interpolatedTime, Transformation t) {
-                if (interpolatedTime == 1) {
-                    v.setVisibility(View.GONE);
-                } else {
-                    v.getLayoutParams().height = initialHeight - (int) (initialHeight * interpolatedTime);
-                    v.requestLayout();
-                }
-            }
-
-            @Override
-            public boolean willChangeBounds() {
-                return true;
-            }
-        };
-
-        // 1dp/ms
-        a.setDuration((int) (initialHeight / v.getContext().getResources().getDisplayMetrics().density) / 2);
         v.startAnimation(a);
     }
 

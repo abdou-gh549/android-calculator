@@ -25,12 +25,10 @@ public class BasicCalculatorFragment extends Fragment {
 
     }
 
-
     public void setMainView(IMainView m_mainView) {
         this.m_mainView = m_mainView;
         presenter = new BasicCalculatorPresenter(m_mainView);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,7 +36,6 @@ public class BasicCalculatorFragment extends Fragment {
         basicCalculatorView = inflater.inflate(R.layout.fragment_basic_calculator, container, false);
 
         setUpButtons();
-
 
         return basicCalculatorView;
     }
@@ -75,13 +72,9 @@ public class BasicCalculatorFragment extends Fragment {
         for (int i = 0; i < buttonsId.length; i++) {
             button = basicCalculatorView.findViewById(buttonsId[i]);
             button.setTag(i);
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.d("click", "button number clicked");
-                    presenter.numberButtonClick((Integer) view.getTag());
-                }
-            });
+            button.setOnClickListener(view ->
+                presenter.numberButtonClick((Integer) view.getTag())
+            );
         }
 
 

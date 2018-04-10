@@ -9,7 +9,7 @@ public class AdvanceOperatorPresenter implements IAdvanceOperatorPresenter {
 
     public AdvanceOperatorPresenter(IMainView IMainView) {
         this.mainView = IMainView;
-        advanceOperatorModel =  new AdvanceOperatorModel();
+        advanceOperatorModel = new AdvanceOperatorModel();
     }
 
     @Override

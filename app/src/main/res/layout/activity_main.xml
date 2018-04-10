@@ -5,7 +5,7 @@
     android:id = "@+id/mainLayout"
     android:layout_width = "match_parent"
     android:layout_height = "match_parent"
-    android:background = "@drawable/gradiant"
+    android:background = "@drawable/main_result_background"
     android:fitsSystemWindows = "true"
     android:orientation = "vertical"
     tools:context = ".main.MainActivity">
@@ -14,17 +14,15 @@
 
         android:id = "@+id/inp_scrollview"
         android:layout_width = "match_parent"
-        android:layout_height = "match_parent"
+        android:layout_height = "0dp"
         android:layout_marginBottom = "8dp"
         android:layout_weight = "1"
-        android:scrollbarAlwaysDrawHorizontalTrack="false"
         android:scrollbars = "vertical">
 
         <LinearLayout
-            android:id="@+id/input_layout"
+            android:id = "@+id/input_layout"
             android:layout_width = "match_parent"
             android:layout_height = "wrap_content"
-
             android:orientation = "vertical">
 
             <TextView
@@ -36,27 +34,26 @@
                 android:textColor = "@color/fontColor"
                 android:textSize = "28dp"
                 app:layout_constraintTop_toTopOf = "parent" />
-
         </LinearLayout>
 
     </ScrollView>
+
     <HorizontalScrollView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:layout_gravity="right"
-        >
+        android:layout_gravity = "right">
+
         <TextView
             android:id = "@+id/resultTextView"
             android:layout_width = "wrap_content"
             android:layout_height = "49dp"
             android:layout_marginBottom = "18dp"
-            android:lines="1"
+            android:lines = "1"
             android:paddingRight = "@dimen/text_padding"
             android:textColor = "@color/fontColor"
             android:textSize = "35dp" />
 
     </HorizontalScrollView>
-
 
     <FrameLayout
         android:layout_width = "match_parent"

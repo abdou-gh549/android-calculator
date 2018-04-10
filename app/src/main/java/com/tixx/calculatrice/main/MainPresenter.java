@@ -22,13 +22,6 @@ public class MainPresenter implements IMainConstraint.IMainPresenter {
         } else mainView.showAdvanceOperatorButton();
     }
 
-    @Override
-    public void saveExpression() {
-//        String input = mainView.getInput() + " = ";
-//        String result = mainView.getResult();
-//        TextView textView = mainView.getNewTextView();
-//        textView.setText(input+result);
-    }
 
 
 }

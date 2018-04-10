@@ -1,12 +1,11 @@
 <FrameLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-             xmlns:tools = "http://schemas.android.com/tools"
-             android:layout_width = "match_parent"
-             android:layout_height = "match_parent"
-             tools:context = "com.tixx.calculatrice.advanceOperator.AdvanceOperatorFragment"
-    >
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    tools:context = "com.tixx.calculatrice.advanceOperator.AdvanceOperatorFragment">
 
     <TableLayout
-        android:id = "@+id/kklkl"
+        android:id = "@+id/tableLayout_advanceOperator"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
         android:layout_gravity = "bottom"
@@ -14,93 +13,79 @@
         android:background = "@color/advanceOperator"
         android:gravity = "center"
         android:paddingBottom = "30dp"
-        android:paddingTop = "15dp"
-        >
-
+        android:paddingTop = "15dp">
 
         <TableRow>
 
             <Button
-                android:id="@+id/openParenthese"
+                android:id = "@+id/openParenthese"
                 style = "@style/advanceButton"
-                android:text = "("
-                />
+                android:text = "(" />
 
             <Button
-                android:id="@+id/closeParenthese"
+                android:id = "@+id/closeParenthese"
                 style = "@style/advanceButton"
-                android:text = ")"
-                />
+                android:text = ")" />
 
             <Button
-                android:id="@+id/pow"
+                android:id = "@+id/pow"
                 style = "@style/advanceButton"
-                android:text = "^"
-                />
+                android:text = "^" />
         </TableRow>
 
         <TableRow>
 
             <Button
-                android:id="@+id/cos"
+                android:id = "@+id/cos"
                 style = "@style/advanceButton"
-                android:text = "cos"
-                />
+                android:text = "cos" />
 
             <Button
-                android:id="@+id/sin"
+                android:id = "@+id/sin"
                 style = "@style/advanceButton"
-                android:text = "sin"
-                />
+                android:text = "sin" />
 
             <Button
-                android:id="@+id/tan"
+                android:id = "@+id/tan"
                 style = "@style/advanceButton"
-                android:text = "tan"
-                />
+                android:text = "tan" />
         </TableRow>
 
         <TableRow>
 
             <Button
-                android:id="@+id/exp"
+                android:id = "@+id/exp"
                 style = "@style/advanceButton"
-                android:text = "exp"
-                />
+                android:text = "exp" />
 
             <Button
-                android:id="@+id/log"
+                android:id = "@+id/log"
                 style = "@style/advanceButton"
-                android:text = "log"
-                />
+                android:text = "log" />
 
             <Button
-                android:id="@+id/ln"
+                android:id = "@+id/ln"
                 style = "@style/advanceButton"
-                android:text = "ln"
-                />
+                android:text = "ln" />
         </TableRow>
 
         <TableRow>
 
             <Button
-                android:id="@+id/pi"
+                android:id = "@+id/pi"
                 style = "@style/advanceButton"
-                android:text = "π"
-                />
+                android:text = "π" />
 
             <Button
-                android:id="@+id/sqrt"
+                android:id = "@+id/sqrt"
                 style = "@style/advanceButton"
 
-                android:text = "√"
-                />
+                android:text = "√" />
 
             <Button
-                android:id="@+id/fact"
+                android:id = "@+id/fact"
                 style = "@style/advanceButton"
-                android:text = "!"
-                />
+                android:text = "!" />
 
         </TableRow>
     </TableLayout>

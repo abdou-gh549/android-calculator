@@ -1,8 +1,0 @@
-<TextView xmlns:android = "http://schemas.android.com/apk/res/android"
-    android:id = "@+id/inputTextView"
-    android:layout_width = "wrap_content"
-    android:layout_height = "wrap_content"
-    android:layout_marginTop = "8dp"
-    android:paddingStart = "@dimen/text_padding"
-    android:textColor = "@color/fontColor"
-    android:textSize = "18dp" />

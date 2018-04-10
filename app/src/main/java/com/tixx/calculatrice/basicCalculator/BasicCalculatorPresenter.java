@@ -17,15 +17,12 @@ public class BasicCalculatorPresenter implements IBasicCalculatorPresenter {
 
     @Override
     public void numberButtonClick(int buttonTage) {
-        Log.d("numberButtonClick", "im in start of func ");
 
         String inp = mainView.getInput();
         String inputToAdd = m_basicCalcModel.validateNewNumberInput(inp, buttonTage);
-        // if old input == 0 clear it
         if ("0".equals(inp)) {
             mainView.clearInput();
         }
-        Log.d("numberButtonClick", "im in fucntion and i didnt quit ");
         mainView.addToInput(inputToAdd);
     }
 
@@ -48,7 +45,6 @@ public class BasicCalculatorPresenter implements IBasicCalculatorPresenter {
     public void addPoint() {
         String inputToAdd = m_basicCalcModel.validateNewPointInput(mainView.getInput());
         mainView.addToInput(inputToAdd);
-
     }
 
     @Override
@@ -59,7 +55,6 @@ public class BasicCalculatorPresenter implements IBasicCalculatorPresenter {
             Double result = arithmeticEvaluator.evaluate(inp);
             mainView.showResult(result.toString());
         } catch (RuntimeException exp) {
-            Log.d("calcul", exp.getMessage());
             mainView.showResult(exp.getMessage());
         }
 

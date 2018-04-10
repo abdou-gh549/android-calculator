@@ -1,8 +1,8 @@
 package com.tixx.calculatrice.basicCalculator;
 
 
-import static com.tixx.calculatrice.util.ExpressionChek.isNumber;
-import static com.tixx.calculatrice.util.ExpressionChek.isOperator;
+import static com.tixx.calculatrice.util.ExpressionCheck.isNumber;
+import static com.tixx.calculatrice.util.ExpressionCheck.isOperator;
 
 public class BasicCalculatorModel {
 
@@ -39,9 +39,7 @@ public class BasicCalculatorModel {
                 inputToAdd = ".";
             }
         }
-
         return inputToAdd;
-
     }
 
     private String getLastChar(String str) {
